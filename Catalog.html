@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog - E-Commerce Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <h1>🛒 My E-Commerce Store</h1>
+            <nav>
+                <a href="catalog.html" class="active">Catalog</a>
+                <a href="cart.html">  Cart 
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>
+                <a href="login.html" id="logout-btn">Login </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <!-- Sidebar with Categories -->
+        <aside class="sidebar">
+            <h2>Categories</h2>
+            <ul class="category-list" id="category-list">
+                
+            </ul>
+        </aside>
+
+        
+       <main class="products-section">
+          <h2 id="section-title">All Products</h2>
+
+    
+          <div class="products-grid" id="products-grid"></div>
+       </main>
+
+    </div>
+
+    
+    <div id="notification" class="notification"></div>
+
+<script src="data.js"></script>
+<script src="catalog.js"></script>
+</body>
+</html>

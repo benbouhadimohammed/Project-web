@@ -1,0 +1,602 @@
+/* ========================================
+   MODERN SIMPLE DESIGN
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f8f9fa;
+    color: #2d3748;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+body {
+    background: url(pics/background.jpg) no-repeat ;
+    background-position: center;
+    background-attachment: fixed;
+     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* From Uiverse.io by reglobby */ 
+
+
+header {
+    
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #ccc9d2;
+    font-weight: 700;
+}
+
+header nav {
+    display: flex;
+    gap: 10px;
+}
+
+header nav a {
+    color: #4a5568;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.2s;
+}
+
+header nav a:hover {
+    background: #f7fafc;
+    color: #2a2a2a;
+}
+
+header nav a.active {
+    background: #2e2d30;
+    color: rgb(85, 80, 80);
+}
+
+.cart-badge {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    background: #ee5a6f;
+    color: white;
+    border-radius: 10px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* ========================================
+   LOGIN PAGE - Modern Card
+   ======================================== */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #363739 0%, #474548 100%);
+}
+
+.login-box {
+    background: white;
+    padding: 50px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.login-box h1 {
+    font-size: 28px;
+    color: #2d3748;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.login-box > p {
+    text-align: center;
+    color: #718096;
+    margin-bottom: 35px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: border 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2a2a2a;
+}
+.button{
+ display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btn-primary {
+    min-width: 120px;
+   
+  position: relative;
+  cursor: pointer;
+
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 7px;
+
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(71, 81, 92, 1) 0%,
+    rgba(11, 21, 30, 1) 45%
+     );
+
+  color: rgb(255, 255, 255, 0.66);
+
+  transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+    
+}
+.button::before {
+  content: "";
+  width: 70%;
+  height: 1px;
+
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0.2;
+
+  transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+.button:hover::before {
+  opacity: 1;
+}
+
+.btn-primary:hover {
+     color: rgb(255, 255, 255, 1);
+  transform: scale(1.1) translateY(-3px);
+}
+
+.error-message {
+    background: #fee;
+    color: #c53030;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-left: 4px solid #c53030;
+}
+
+.login-info {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f7fafc;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.login-info p {
+    font-size: 14px;
+    color: #4a5568;
+    margin: 5px 0;
+}
+
+.login-info code {
+    background: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    color: #2a2a2a;
+    font-weight: 600;
+}
+
+/* ========================================
+   LAYOUT - Grid System
+   ======================================== */
+.main-content {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 25px;
+    margin: 30px auto;
+    padding-bottom: 40px;
+}
+
+/* ========================================
+   SIDEBAR - Clean Navigation
+   ======================================== */
+.sidebar {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    height: fit-content;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #2d3748;
+}
+/* Sidebar */
+.sidebar {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar h2 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #222;
+}
+
+
+
+
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-list li {
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #333;
+  background: #f4f6f8;
+  transition: all 0.25s ease;
+}
+.category-list li:hover {
+  background: #111;
+  color: #fff;
+  transform: translateX(4px);
+}
+.category-list li.active {
+  background: #111;
+  color: #fff;
+}
+
+
+/* ========================================
+   PRODUCTS - Card Grid
+   ======================================== */
+.products-section h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #2d3748;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    text-align: center;
+    font-size: 64px;
+    margin-bottom: 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #2d3748;
+}
+
+.product-category {
+    color: #2a2a2a;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.product-description {
+    color: #718096;
+    font-size: 14px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.product-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 20px;
+}
+
+.btn-add-to-cart {
+    width: 100%;
+    padding: 12px;
+    background: #2a2a2a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add-to-cart:hover {
+    background: #2a2a2a;
+    transform: translateY(-2px);
+}
+
+.no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    color: #718096;
+    font-size: 18px;
+}
+
+/* ========================================
+   CART - Modern Table
+   ======================================== */
+.cart-container {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 16px;
+    text-align: left;
+}
+
+.cart-table thead {
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.cart-table th {
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cart-table tbody tr {
+    border-bottom: 1px solid #f7fafc;
+}
+
+.cart-table tbody tr:hover {
+    background: #f7fafc;
+}
+
+.cart-table tfoot td {
+    font-size: 22px;
+    font-weight: 700;
+    padding-top: 25px;
+    color: #2d3748;
+}
+
+.btn-remove {
+    padding: 8px 16px;
+    background: #ee5a6f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.btn-remove:hover {
+    background: #c53030;
+    transform: scale(1.05);
+}
+
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-secondary {
+    padding: 14px 30px;
+    background: #cbd5e0;
+    color: #2d3748;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background: #a0aec0;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 80px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+.empty-cart p {
+    font-size: 20px;
+    color: #718096;
+    margin-bottom: 25px;
+}
+
+/* ========================================
+   NOTIFICATION - Toast Style
+   ======================================== */
+.notification {
+    position: fixed;
+    top: -100px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    transition: top 0.3s;
+    z-index: 1000;
+    min-width: 280px;
+}
+
+.notification.show {
+    top: 90px;
+}
+
+.notification.success {
+    background: #38a169;
+}
+
+.notification.error {
+    background: #ee5a6f;
+}
+
+/* ========================================
+   RESPONSIVE - Mobile First
+   ======================================== */
+@media (max-width: 968px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    header h1 {
+        font-size: 20px;
+    }
+    
+    .login-box {
+        padding: 35px 25px;
+    }
+    
+    .cart-table {
+        font-size: 14px;
+    }
+    
+    .cart-table th,
+    .cart-table td {
+        padding: 12px 8px;
+    }
+    
+    .cart-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-image {
+        font-size: 48px;
+    }
+}
