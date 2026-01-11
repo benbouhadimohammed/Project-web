@@ -1,4 +1,4 @@
-// DOM elements
+
 const categoryList = document.getElementById("category-list");
 const productsGrid = document.getElementById("products-grid");
 const sectionTitle = document.getElementById("section-title");
