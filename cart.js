@@ -1,12 +1,10 @@
-// Load cart on page load
+
 document.addEventListener("DOMContentLoaded", () => {
     updateCartBadge();
     loadCart();
 });
 
-/* =========================
-   LOAD CART CONTENT
-========================= */
+
 function loadCart() {
     const cart = JSON.parse(localStorage.getItem("cart")) || {};
     const cartItemsContainer = document.getElementById("cart-items");
@@ -49,9 +47,6 @@ function loadCart() {
     }
 }
 
-/* =========================
-   REMOVE ITEM
-========================= */
 function removeItem(id) {
     let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
@@ -64,9 +59,6 @@ function removeItem(id) {
     loadCart();
 }
 
-/* =========================
-   CART BADGE
-========================= */
 function updateCartBadge() {
     const cart = JSON.parse(localStorage.getItem("cart")) || {};
     let count = 0;
@@ -78,9 +70,7 @@ function updateCartBadge() {
     document.getElementById("cart-badge").textContent = count;
 }
 
-/* =========================
-   CHECKOUT (DEMO)
-========================= */
+
 function checkout() {
     showNotification("Checkout successful 🎉");
     localStorage.removeItem("cart");
@@ -88,9 +78,7 @@ function checkout() {
     loadCart();
 }
 
-/* =========================
-   NOTIFICATION
-========================= */
+
 function showNotification(message) {
     const notification = document.getElementById("notification");
     notification.textContent = message;
