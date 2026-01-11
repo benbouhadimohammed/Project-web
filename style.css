@@ -1,6 +1,3 @@
-/* ========================================
-   MODERN SIMPLE DESIGN
-   ======================================== */
 
 * {
     margin: 0;
@@ -41,7 +38,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
-/* From Uiverse.io by reglobby */ 
+
 
 
 header {
@@ -102,9 +99,7 @@ header nav a.active {
     font-weight: bold;
 }
 
-/* ========================================
-   LOGIN PAGE - Modern Card
-   ======================================== */
+
 .login-container {
     min-height: 100vh;
     display: flex;
@@ -249,9 +244,6 @@ header nav a.active {
     font-weight: 600;
 }
 
-/* ========================================
-   LAYOUT - Grid System
-   ======================================== */
 .main-content {
     display: grid;
     grid-template-columns: 280px 1fr;
@@ -260,9 +252,7 @@ header nav a.active {
     padding-bottom: 40px;
 }
 
-/* ========================================
-   SIDEBAR - Clean Navigation
-   ======================================== */
+
 .sidebar {
     background: white;
     padding: 25px;
@@ -321,9 +311,7 @@ header nav a.active {
 }
 
 
-/* ========================================
-   PRODUCTS - Card Grid
-   ======================================== */
+
 .products-section h2 {
     font-size: 26px;
     margin-bottom: 25px;
@@ -417,9 +405,7 @@ header nav a.active {
     font-size: 18px;
 }
 
-/* ========================================
-   CART - Modern Table
-   ======================================== */
+
 .cart-container {
     background: white;
     padding: 35px;
@@ -521,9 +507,7 @@ header nav a.active {
     margin-bottom: 25px;
 }
 
-/* ========================================
-   NOTIFICATION - Toast Style
-   ======================================== */
+
 .notification {
     position: fixed;
     top: -100px;
@@ -550,9 +534,7 @@ header nav a.active {
     background: #ee5a6f;
 }
 
-/* ========================================
-   RESPONSIVE - Mobile First
-   ======================================== */
+
 @media (max-width: 968px) {
     .main-content {
         grid-template-columns: 1fr;
