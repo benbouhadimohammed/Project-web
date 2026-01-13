@@ -1,58 +1,108 @@
 <?php
-header('Content-Type: application/json');
-require_once '../config/database.php';
-require_once '../includes/session.php';
+session_start();
+require __DIR__ . '/db.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
-    exit;
-}
+$error = "";
 
-$input = json_decode(file_get_contents('php://input'), true);
+/* ---------------------------
+   CREATE ADMIN USER IF NOT EXISTS
+---------------------------- */
+$adminUsername = "Admin1";
+$adminPassword = "admin123";
+$adminEmail = "admin@store.com";
 
-if (empty($input['username']) || empty($input['password'])) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Username and password are required'
-    ]);
-    exit;
-}
+$stmt = mysqli_prepare($conn, "SELECT id FROM users WHERE username = ?");
+mysqli_stmt_bind_param($stmt, "s", $adminUsername);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_store_result($stmt);
 
-$username = trim($input['username']);
-$password = $input['password'];
-
-try {
-    $stmt = query(
-        "SELECT id, username, password FROM users WHERE username = ?",
-        [$username]
+if (mysqli_stmt_num_rows($stmt) === 0) {
+    $hashedPassword = password_hash($adminPassword, PASSWORD_DEFAULT);
+    $insert = mysqli_prepare(
+        $conn,
+        "INSERT INTO users (username, password, email) VALUES (?, ?, ?)"
     );
-    
-    $user = $stmt->fetch();
-    
-    if ($user && password_verify($password, $user['password'])) {
-        loginUser($user['id'], $user['username']);
-        
-        echo json_encode([
-            'success' => true,
-            'message' => 'Login successful',
-            'user' => [
-                'id' => $user['id'],
-                'username' => $user['username']
-            ]
-        ]);
+    mysqli_stmt_bind_param($insert, "sss", $adminUsername, $hashedPassword, $adminEmail);
+    mysqli_stmt_execute($insert);
+    mysqli_stmt_close($insert);
+}
+mysqli_stmt_close($stmt);
+
+/* ---------------------------
+   REDIRECT IF LOGGED IN
+---------------------------- */
+if (isset($_SESSION['user_id'])) {
+    header("Location: catalog.php");
+    exit;
+}
+
+/* ---------------------------
+   LOGIN LOGIC
+---------------------------- */
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    if ($username === "" || $password === "") {
+        $error = "All fields are required.";
     } else {
-        echo json_encode([
-            'success' => false,
-            'message' => 'Invalid username or password'
-        ]);
+        $stmt = mysqli_prepare(
+            $conn,
+            "SELECT id, username, password FROM users WHERE username = ? LIMIT 1"
+        );
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $id, $dbUser, $dbPass);
+
+        if (mysqli_stmt_fetch($stmt)) {
+            if (password_verify($password, $dbPass)) {
+                $_SESSION['user_id'] = $id;
+                $_SESSION['username'] = $dbUser;
+                header("Location: catalog.php");
+                exit;
+            } else {
+                $error = "Invalid username or password.";
+            }
+        } else {
+            $error = "Invalid username or password.";
+        }
+
+        mysqli_stmt_close($stmt);
     }
-    
-} catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode([
-        'success' => false,
-        'message' => 'Server error'
-    ]);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login - E-Commerce Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>🛒 Welcome</h1>
+            <p>Please login to continue shopping</p>
+
+            <?php if ($error): ?>
+            <div class="error-message"><?= htmlspecialchars($error) ?></div>
+            <?php endif; ?>
+
+            <form method="POST">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
